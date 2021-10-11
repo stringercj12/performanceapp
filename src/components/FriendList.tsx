@@ -7,6 +7,7 @@ interface Props {
     id: number;
     name: string;
     likes: number;
+    online: string;
   }[],
   follow: () => void
 }
