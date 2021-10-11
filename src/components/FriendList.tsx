@@ -15,7 +15,10 @@ export function FriendList({ data }: Props) {
     <View>
       {
         data.map((friend) => (
-          <Friend data={friend} />
+          <Friend
+            key={String(friend.id)}
+            data={friend}
+          />
         ))
       }
     </View>
