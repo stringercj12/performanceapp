@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { FriendList } from '../components/FriendList';
@@ -10,10 +10,12 @@ export function Home() {
   async function handleSearch() {
     const response = await fetch(`http://192.168.18.209:3333/friends?q=${name}`);
     const data = await response.json();
-
     setFriends(data);
-
   }
+
+  const handleFollow = useCallback(() => {
+    console.log('follow user');
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -32,7 +34,10 @@ export function Home() {
       />
 
       <ScrollView style={styles.list}>
-        <FriendList data={friends} />
+        <FriendList
+          data={friends}
+          follow={handleFollow}
+        />
       </ScrollView>
     </View>
   );
