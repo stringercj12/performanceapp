@@ -48,12 +48,10 @@ export function Home() {
         onPress={handleSearch}
       />
 
-      <ScrollView style={styles.list}>
-        <FriendList
-          data={friends}
-          follow={handleFollow}
-        />
-      </ScrollView>
+      <FriendList
+        data={friends}
+        follow={handleFollow}
+      />
     </View>
   );
 }
