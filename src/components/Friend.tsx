@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-
+import lodash from 'lodash';
 interface Props {
   data: {
     id: number;
@@ -29,5 +29,5 @@ function FriendComponent({ data, follow }: Props) {
 }
 
 export const Friend = memo(FriendComponent, (prevProps, nextProps) => {
-  return Object.is(prevProps.data, nextProps.data);
+  return lodash.isEqual(prevProps.data, nextProps.data);
 });
